@@ -40,10 +40,10 @@ public class KinesisSpoutTopology {
     public static void main (String args[]) throws InvalidTopologyException, AuthorizationException, AlreadyAliveException {
         String topologyName = args[0];
         RecordToTupleMapper recordToTupleMapper = new TestRecordToTupleMapper();
-        KinesisConnectionInfo kinesisConnectionInfo = new KinesisConnectionInfo(new CredentialsProviderChain(), new ClientConfiguration(), Regions.US_WEST_2,
+        KinesisConnectionInfo kinesisConnectionInfo = new KinesisConnectionInfo(new CredentialsProviderChain(), new ClientConfiguration(), Regions.US_WEST_2.name(),
                 1000);
         ZkInfo zkInfo = new ZkInfo("localhost:2181", "/kinesisOffsets", 20000, 15000, 10000L, 3, 2000);
-        KinesisConfig kinesisConfig = new KinesisConfig(args[1], ShardIteratorType.TRIM_HORIZON,
+        KinesisConfig kinesisConfig = new KinesisConfig(args[1], ShardIteratorType.TRIM_HORIZON.name(),
                 recordToTupleMapper, new Date(), new ExponentialBackoffRetrier(), zkInfo, kinesisConnectionInfo, 10000L);
         KinesisSpout kinesisSpout = new KinesisSpout(kinesisConfig);
         TopologyBuilder topologyBuilder = new TopologyBuilder();

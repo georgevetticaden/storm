@@ -43,10 +43,10 @@ public class KinesisConfig implements Serializable {
     // the acked queue can infinitely grow without any of them being committed to zk. topology max pending does not help since from storm's view they are acked
     private final Long maxUncommittedRecords;
 
-    public KinesisConfig(String streamName, ShardIteratorType shardIteratorType, RecordToTupleMapper recordToTupleMapper, Date timestamp, FailedMessageRetryHandler
-            failedMessageRetryHandler, ZkInfo zkInfo, KinesisConnectionInfo kinesisConnectionInfo, Long maxUncommittedRecords) {
+    public KinesisConfig(String streamName, String shardIterator, RecordToTupleMapper recordToTupleMapper, Date timestamp, FailedMessageRetryHandler
+            failedMessageRetryHandler, ZkInfo zkInfo, KinesisConnectionInfo kinesisConnectionInfo, long maxUncommittedRecords) {
         this.streamName = streamName;
-        this.shardIteratorType = shardIteratorType;
+        this.shardIteratorType = ShardIteratorType.valueOf(shardIterator);
         this.recordToTupleMapper = recordToTupleMapper;
         this.timestamp = timestamp;
         this.failedMessageRetryHandler = failedMessageRetryHandler;

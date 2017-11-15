@@ -57,7 +57,7 @@ public class ExponentialBackoffRetrier implements FailedMessageRetryHandler, Ser
      * @param baseSeconds base for exponent function in seconds
      * @param maxRetries maximum number of retries before the record is discarded/acked
      */
-    public ExponentialBackoffRetrier (Long initialDelayMillis, Long baseSeconds, Long maxRetries) {
+    public ExponentialBackoffRetrier (long initialDelayMillis, long baseSeconds, long maxRetries) {
         this.initialDelayMillis = initialDelayMillis;
         this.baseSeconds = baseSeconds;
         this.maxRetries = maxRetries;

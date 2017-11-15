@@ -47,17 +47,17 @@ public class KinesisConnectionInfo implements Serializable {
      * @param region region to connect to
      * @param recordsLimit max records to be fetched in a getRecords request to kinesis
      */
-    public KinesisConnectionInfo (AWSCredentialsProvider credentialsProvider, ClientConfiguration clientConfiguration, Regions region, Integer recordsLimit) {
+    public KinesisConnectionInfo (AWSCredentialsProvider credentialsProvider, ClientConfiguration clientConfiguration, String regionString, Integer recordsLimit) {
         if (recordsLimit == null || recordsLimit <= 0) {
             throw new IllegalArgumentException("recordsLimit has to be a positive integer");
         }
-        if (region == null) {
+        if (regionString == null) {
             throw new IllegalArgumentException("region cannot be null");
         }
         serializedKinesisCredsProvider = getKryoSerializedBytes(credentialsProvider);
         serializedkinesisClientConfig = getKryoSerializedBytes(clientConfiguration);
         this.recordsLimit = recordsLimit;
-        this.region = region;
+        this.region = Regions.valueOf(regionString);
     }
 
     public Integer getRecordsLimit() {

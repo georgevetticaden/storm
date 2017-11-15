@@ -36,7 +36,7 @@ public class ZkInfo implements Serializable {
     // time to sleep between retries in milliseconds
     private final Integer retryIntervalMs;
 
-    public ZkInfo (String zkUrl, String zkNode, Integer sessionTimeoutMs, Integer connectionTimeoutMs, Long commitIntervalMs, Integer retryAttempts, Integer
+    public ZkInfo (String zkUrl, String zkNode, int sessionTimeoutMs, int connectionTimeoutMs, long commitIntervalMs, int retryAttempts, int
             retryIntervalMs) {
         this.zkUrl = zkUrl;
         this.zkNode = zkNode;
