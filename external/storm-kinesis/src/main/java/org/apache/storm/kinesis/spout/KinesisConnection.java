@@ -77,7 +77,7 @@ class KinesisConnection {
             getShardIteratorRequest.setShardIteratorType(shardIteratorType);
             if (shardIteratorType.equals(ShardIteratorType.AFTER_SEQUENCE_NUMBER) || shardIteratorType.equals(ShardIteratorType.AT_SEQUENCE_NUMBER)) {
                 getShardIteratorRequest.setStartingSequenceNumber(sequenceNumber);
-            } else if (shardIteratorType.equals(ShardIteratorType.AT_TIMESTAMP)) {
+            } else if (shardIteratorType.name().equals("AT_TIMESTAMP")) {
                 getShardIteratorRequest.setTimestamp(timestamp);
             }
             GetShardIteratorResult getShardIteratorResult = kinesisClient.getShardIterator(getShardIteratorRequest);
