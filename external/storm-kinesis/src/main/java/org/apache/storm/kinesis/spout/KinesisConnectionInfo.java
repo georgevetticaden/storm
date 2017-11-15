@@ -32,7 +32,11 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 public class KinesisConnectionInfo implements Serializable {
-    private final byte[] serializedKinesisCredsProvider;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2275263047795802062L;
+	private final byte[] serializedKinesisCredsProvider;
     private final byte[] serializedkinesisClientConfig;
     private final Integer recordsLimit;
     private final Regions region;

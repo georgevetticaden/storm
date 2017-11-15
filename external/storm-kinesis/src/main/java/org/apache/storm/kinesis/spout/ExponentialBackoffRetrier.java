@@ -29,7 +29,11 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class ExponentialBackoffRetrier implements FailedMessageRetryHandler, Serializable {
-    private static final Logger LOG = LoggerFactory.getLogger(ExponentialBackoffRetrier.class);
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7081306365956814416L;
+	private static final Logger LOG = LoggerFactory.getLogger(ExponentialBackoffRetrier.class);
     // Wait interfal for retrying after first failure
     private final Long initialDelayMillis;
     // Base for exponential function in seconds for retrying for second, third and so on failures

@@ -27,7 +27,11 @@ import java.util.Map;
 
 public class KinesisSpout extends BaseRichSpout {
 
-    private final KinesisConfig kinesisConfig;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1325118023842587602L;
+	private final KinesisConfig kinesisConfig;
     private transient KinesisRecordsManager kinesisRecordsManager;
     private transient SpoutOutputCollector collector;
 	private String outputStreamName;

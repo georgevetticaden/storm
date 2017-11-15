@@ -21,7 +21,11 @@ package org.apache.storm.kinesis.spout;
 import java.io.Serializable;
 
 public class ZkInfo implements Serializable {
-    // comma separated list of zk connect strings to connect to zookeeper e.g. localhost:2181
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 611655705959764352L;
+	// comma separated list of zk connect strings to connect to zookeeper e.g. localhost:2181
     private final String zkUrl;
     // zk node under which to commit the sequence number of messages. e.g. /committed_sequence_numbers
     private final String zkNode;
