@@ -27,10 +27,12 @@
     <name>storm-kinesis</name>
 
     <properties>
-        <aws-java-sdk.version>1.10.77</aws-java-sdk.version>
+        <aws-java-sdk.version>1.11.229</aws-java-sdk.version>
     </properties>
 
     <dependencies>
+    
+		    
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
