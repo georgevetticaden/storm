@@ -30,14 +30,24 @@ public class KinesisSpout extends BaseRichSpout {
     private final KinesisConfig kinesisConfig;
     private transient KinesisRecordsManager kinesisRecordsManager;
     private transient SpoutOutputCollector collector;
+	private String outputStreamName;
 
     public KinesisSpout (KinesisConfig kinesisConfig) {
         this.kinesisConfig = kinesisConfig;
     }
+    
+    public KinesisSpout withOutputStream (String outputStream) {
+        if (outputStream == null || outputStream.isEmpty()) {
+            String errorString = "Output stream must not be empty";
+            throw new RuntimeException(errorString);
+        }
+        this.outputStreamName = outputStream;
+        return this;
+    }    
 
     @Override
     public void declareOutputFields(OutputFieldsDeclarer declarer) {
-        declarer.declare(kinesisConfig.getRecordToTupleMapper().getOutputFields());
+        declarer.declareStream(outputStreamName, kinesisConfig.getRecordToTupleMapper().getOutputFields());
     }
 
     @Override
@@ -48,7 +58,7 @@ public class KinesisSpout extends BaseRichSpout {
     @Override
     public void open(Map conf, TopologyContext context, SpoutOutputCollector collector) {
         this.collector = collector;
-        kinesisRecordsManager = new KinesisRecordsManager(kinesisConfig);
+        kinesisRecordsManager = new KinesisRecordsManager(kinesisConfig, outputStreamName);
         kinesisRecordsManager.initialize(context.getThisTaskIndex(), context.getComponentTasks(context.getThisComponentId()).size());
     }
 

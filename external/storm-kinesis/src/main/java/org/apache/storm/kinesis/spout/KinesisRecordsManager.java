@@ -65,11 +65,13 @@ class KinesisRecordsManager {
     private transient long lastCommitTime;
     // boolean to track deactivated state
     private transient boolean deactivated;
+	private String  outputStreamName;
 
-    KinesisRecordsManager (KinesisConfig kinesisConfig) {
+    KinesisRecordsManager (KinesisConfig kinesisConfig, String outputStreamName) {
         this.kinesisConfig = kinesisConfig;
         this.zkConnection = new ZKConnection(kinesisConfig.getZkInfo());
         this.kinesisConnection = new KinesisConnection(kinesisConfig.getKinesisConnectionInfo());
+        this.outputStreamName = outputStreamName; 
     }
 
     void initialize (int myTaskIndex, int totalTasks) {
@@ -356,7 +358,7 @@ class KinesisRecordsManager {
         List<Object> tuple = kinesisConfig.getRecordToTupleMapper().getTuple(record);
         // if a record is returned put the sequence number in the emittedPerShard to tie back with ack or fail
         if (tuple != null && tuple.size() > 0) {
-            collector.emit(tuple, kinesisMessageId);
+            collector.emit(outputStreamName, tuple, kinesisMessageId);
             if (!emittedPerShard.containsKey(kinesisMessageId.getShardId())) {
                 emittedPerShard.put(kinesisMessageId.getShardId(), new TreeSet<BigInteger>());
             }
