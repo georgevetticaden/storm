@@ -62,11 +62,11 @@ public class KinesisConfig implements Serializable {
         }
         if (shardIteratorType == null || shardIteratorType.equals(ShardIteratorType.AFTER_SEQUENCE_NUMBER) || shardIteratorType.equals(ShardIteratorType
                 .AT_SEQUENCE_NUMBER)) {
-            throw new IllegalArgumentException("shardIteratorType has to be one of the " + ShardIteratorType.AT_TIMESTAMP + "," + ShardIteratorType.LATEST +
+            throw new IllegalArgumentException("shardIteratorType has to be one of the AT_TIMESTAMP "+ "," + ShardIteratorType.LATEST +
                     "," + ShardIteratorType.TRIM_HORIZON);
         }
-        if (shardIteratorType.equals(ShardIteratorType.AT_TIMESTAMP) && timestamp == null) {
-            throw new IllegalArgumentException("timestamp must be provided if shardIteratorType is " + ShardIteratorType.AT_TIMESTAMP);
+        if (shardIteratorType.name().equals("AT_TIMESTAMP") && timestamp == null) {
+            throw new IllegalArgumentException("timestamp must be provided if shardIteratorType is : AT_TIMESTAMP");
         }
         if (recordToTupleMapper == null) {
             throw new IllegalArgumentException("recordToTupleMapper cannot be null");
