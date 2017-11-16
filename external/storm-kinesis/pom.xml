@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <artifactId>storm-kinesis</artifactId>
-    <version>1.1.0.4</version>
+    <version>1.1.0.5</version>
     <name>storm-kinesis</name>
 
     <properties>
@@ -124,6 +124,10 @@
                                     <pattern>com.amazonaws</pattern>
                                     <shadedPattern>com.amazonaws.shaded</shadedPattern>
                                 </relocation>
+								<relocation>
+									<pattern>org.apache.http</pattern>
+								    <shadedPattern>org.apache.aws.shade.org.apache.http</shadedPattern>
+								</relocation>                                
                            </relocations>
                         </configuration>
                     </execution>
