@@ -17,18 +17,19 @@
  */
 package org.apache.storm.kinesis.spout.test;
 
-import com.amazonaws.services.kinesis.model.Record;
-import org.apache.storm.kinesis.spout.RecordToTupleMapper;
-import org.apache.storm.tuple.Fields;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.Serializable;
 import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.storm.kinesis.spout.RecordToTupleMapper;
+import org.apache.storm.tuple.Fields;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.amazonaws.services.kinesis.model.Record;
 
 public class TestRecordToTupleMapper implements RecordToTupleMapper, Serializable {
     private static final Logger LOG = LoggerFactory.getLogger(TestRecordToTupleMapper.class);

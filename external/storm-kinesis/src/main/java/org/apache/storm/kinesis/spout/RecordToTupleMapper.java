@@ -17,10 +17,11 @@
  */
 package org.apache.storm.kinesis.spout;
 
-import com.amazonaws.services.kinesis.model.Record;
+import java.util.List;
+
 import org.apache.storm.tuple.Fields;
 
-import java.util.List;
+import com.amazonaws.services.kinesis.model.Record;
 
 public interface RecordToTupleMapper {
     /**

@@ -18,10 +18,10 @@
 
 package org.apache.storm.kinesis.spout;
 
-import com.amazonaws.services.kinesis.model.ShardIteratorType;
-
 import java.io.Serializable;
 import java.util.Date;
+
+import com.amazonaws.services.kinesis.model.ShardIteratorType;
 
 public class KinesisConfig implements Serializable {
     /**
