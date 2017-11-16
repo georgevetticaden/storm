@@ -28,12 +28,13 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class ExponentialBackoffRetrier implements FailedMessageRetryHandler, Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 7081306365956814416L;
+public class ExponentialBackoffRetrier implements FailedMessageRetryHandler {
+  
+	
+
+	private static final long serialVersionUID = -6566750279720799712L;
 	private static final Logger LOG = LoggerFactory.getLogger(ExponentialBackoffRetrier.class);
+	
     // Wait interfal for retrying after first failure
     private final Long initialDelayMillis;
     // Base for exponential function in seconds for retrying for second, third and so on failures
@@ -65,6 +66,7 @@ public class ExponentialBackoffRetrier implements FailedMessageRetryHandler, Ser
         this.initialDelayMillis = initialDelayMillis;
         this.baseSeconds = baseSeconds;
         this.maxRetries = maxRetries;
+        LOG.info("About to validate ExponentialBackoffRetrier.." );
         validate();
     }
 
