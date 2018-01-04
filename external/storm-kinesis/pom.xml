@@ -28,6 +28,7 @@
 
     <properties>
         <aws-java-sdk.version>1.11.229</aws-java-sdk.version>
+        <jackson.version>2.7.3</jackson.version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,12 @@
 			<groupId>org.apache.httpcomponents</groupId>
   			<artifactId>httpclient</artifactId>		
 			<version>4.5.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>  
 				    
         <dependency>
@@ -127,7 +134,7 @@
 								<relocation>
 									<pattern>org.apache.http</pattern>
 								    <shadedPattern>org.apache.aws.shade.org.apache.http</shadedPattern>
-								</relocation>                                
+								</relocation>   								                             
                            </relocations>
                         </configuration>
                     </execution>
